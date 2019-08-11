@@ -24,7 +24,7 @@ class Stack
   # stack and return the value to the user
   def pop
     if @data == nil
-      return 'nil'
+      return nil
     else
       value = @data.value
       @data = @data.next_node
@@ -44,20 +44,16 @@ def print_values(list_node)
 end
 
 def reverse_list(list)
-  # ADD CODE HERE
-
-  while list
-    # ADD CODE HERE
-    list = list.next_node
+  while list.data != nil
+    puts list.pop
   end
-
-  # ADD CODE HERE
 end
 
 stack = Stack.new
 stack.push(1)
 stack.push(23)
+stack.push(44)
+stack.push(3)
+stack.push(33)
 
-puts stack.pop
-puts stack.pop
-puts stack.pop
+reverse_list(stack)
