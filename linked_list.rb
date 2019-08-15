@@ -34,7 +34,7 @@ class Stack
   end
 
   def peek
-    # peek at the top of the stack, also try and get it to look for an index
+    return @top.next_node.value
   end
 
 end
@@ -63,4 +63,5 @@ stack.push(44)
 stack.push(3)
 stack.push(33)
 
-reverse_list(stack)
+puts stack.peek.peek
+# reverse_list(stack)
