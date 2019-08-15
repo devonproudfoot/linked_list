@@ -10,27 +10,33 @@ end
 class Stack
   attr_reader :data
 
+  # rename data value to top
   def initialize
-    @data = nil
+    @top = nil
   end
 
   # Push a value onto the stack
   def push(value)
-    @data = LinkedListNode.new(value, @data)
+    @top = LinkedListNode.new(value, @top)
   end
 
   # Pop an item off the stack.
   # Remove the last item that was pushed onto the
   # stack and return the value to the user
   def pop
-    if @data == nil
+    if @top == nil
       return nil
     else
-      value = @data.value
-      @data = @data.next_node
+      value = @top.value
+      @top = @top.next_node
       return value
     end
   end
+
+  def peek
+    # peek at the top of the stack, also try and get it to look for an index
+  end
+
 end
 
 def print_values(list_node)
@@ -45,6 +51,7 @@ end
 
 def reverse_list(list)
   while list.data != nil
+    # list = list.next_node
     puts list.pop
   end
 end
