@@ -8,7 +8,7 @@ class LinkedListNode
 end
 
 class Stack
-  attr_reader :data
+  attr_reader :top
 
   # rename data value to top
   def initialize
@@ -35,7 +35,7 @@ class Stack
 
   def peek
     return @top.next_node.value
-  end
+  end 
 
 end
 
@@ -50,10 +50,13 @@ def print_values(list_node)
 end
 
 def reverse_list(list)
-  while list.data != nil
-    # list = list.next_node
-    puts list.pop
+  reverse_list = Stack.new
+
+  while list != nil  
+    reverse_list.push(list.value)
+    list = list.next_node
   end
+  return reverse_list
 end
 
 stack = Stack.new
@@ -63,5 +66,6 @@ stack.push(44)
 stack.push(3)
 stack.push(33)
 
-puts stack.peek.peek
-# reverse_list(stack)
+print_values(stack.top)
+reverse_stack = reverse_list(stack.top)
+print_values(reverse_stack.top)
