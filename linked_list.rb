@@ -1,3 +1,5 @@
+# comments have things to explore or talk about?
+
 class LinkedListNode
   attr_accessor :value, :next_node
 
@@ -10,7 +12,6 @@ end
 class Stack
   attr_reader :top
 
-  # rename data value to top
   def initialize
     @top = nil
   end
@@ -33,9 +34,10 @@ class Stack
     end
   end
 
+  # allow user to set how many nodes deep to peek?
   def peek
     return @top.next_node.value
-  end 
+  end
 
 end
 
@@ -49,10 +51,12 @@ def print_values(list_node)
   end
 end
 
+# should this be in the stack class?
+# should this create a new stack? Or in some situations you might not want to create two stacks
 def reverse_list(list)
   reverse_list = Stack.new
 
-  while list != nil  
+  while list 
     reverse_list.push(list.value)
     list = list.next_node
   end
