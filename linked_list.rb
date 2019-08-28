@@ -57,7 +57,7 @@ end
 
 # should this be in the stack class?
 # should this create a new stack? Or in some situations you might not want to create two stacks
-def reverse_list(list)
+def reverse_stack(list)
   reverse_list = Stack.new
 
   while list 
@@ -67,10 +67,14 @@ def reverse_list(list)
   return reverse_list
 end
 
-def reverse_list(list, previous=nil)
-  list.next_node = previous
-
-
+def reverse_list(current_node, previous_node=nil)
+  while current_node.next_node
+    temporary_node = current_node.next_node
+    current_node.next_node = previous_node
+    previous_node = current_node.value
+    current_node = temporary_node
+  end
+  return current_node.value
 end
 
 
@@ -82,9 +86,9 @@ def check_for_infinite_loop(list)
 
   while hare.next_node
     hare = hare.next_node.next_node
-    puts 'hare ' + hare.value.to_s
+    # puts 'hare ' + hare.value.to_s
     turtle = turtle.next_node
-    puts 'turtle ' + turtle.value.to_s
+    # puts 'turtle ' + turtle.value.to_s
     if hare.value == turtle.value && hare.next_node == turtle.next_node
       return true
     end
@@ -102,7 +106,7 @@ end
 # puts stack.peek(2)
 
 # print_values(stack.top)
-# reverse_stack = reverse_list(stack.top)
+# reverse_stack = reverse_stack(stack.top)
 # print_values(reverse_stack.top)
 
 node1 = LinkedListNode.new(37)
@@ -114,6 +118,8 @@ node4 = LinkedListNode.new(37)
 node5 = LinkedListNode.new(99, node4)
 node6 = LinkedListNode.new(12, node5)
 
+
+puts reverse_list(node6)
 
 puts check_for_infinite_loop(node3)
 puts check_for_infinite_loop(node6)
