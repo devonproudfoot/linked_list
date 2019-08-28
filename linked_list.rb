@@ -34,9 +34,13 @@ class Stack
     end
   end
 
-  # allow user to set how many nodes deep to peek?
-  def peek
-    return @top.next_node.value
+  # allow user to set how many nodes deep to peek? yes lets try
+  def peek(depth=1)
+    peek = @top
+    depth.times do
+      peek = peek.next_node
+    end
+    return peek.value
   end
 
 end
@@ -63,12 +67,19 @@ def reverse_list(list)
   return reverse_list
 end
 
+def check_for_infinite_loop(list)
+
+
+end
+
 stack = Stack.new
 stack.push(1)
 stack.push(23)
 stack.push(44)
 stack.push(3)
 stack.push(33)
+
+puts stack.peek(2)
 
 print_values(stack.top)
 reverse_stack = reverse_list(stack.top)
