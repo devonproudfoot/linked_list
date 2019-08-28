@@ -67,20 +67,53 @@ def reverse_list(list)
   return reverse_list
 end
 
-def check_for_infinite_loop(list)
+def reverse_list(list, previous=nil)
+  list.next_node = previous
 
 
 end
 
-stack = Stack.new
-stack.push(1)
-stack.push(23)
-stack.push(44)
-stack.push(3)
-stack.push(33)
 
-puts stack.peek(2)
+# talk to Cassey about this?
+def check_for_infinite_loop(list)
 
-print_values(stack.top)
-reverse_stack = reverse_list(stack.top)
-print_values(reverse_stack.top)
+  hare = list
+  turtle = list
+
+  while hare.next_node
+    hare = hare.next_node.next_node
+    puts 'hare ' + hare.value.to_s
+    turtle = turtle.next_node
+    puts 'turtle ' + turtle.value.to_s
+    if hare.value == turtle.value && hare.next_node == turtle.next_node
+      return true
+    end
+  end
+  return false
+end
+
+# stack = Stack.new
+# stack.push(1)
+# stack.push(23)
+# stack.push(44)
+# stack.push(3)
+# stack.push(33)
+
+# puts stack.peek(2)
+
+# print_values(stack.top)
+# reverse_stack = reverse_list(stack.top)
+# print_values(reverse_stack.top)
+
+node1 = LinkedListNode.new(37)
+node2 = LinkedListNode.new(99, node1)
+node3 = LinkedListNode.new(12, node2)
+node1.next_node = node3
+
+node4 = LinkedListNode.new(37)
+node5 = LinkedListNode.new(99, node4)
+node6 = LinkedListNode.new(12, node5)
+
+
+puts check_for_infinite_loop(node3)
+puts check_for_infinite_loop(node6)
