@@ -89,7 +89,7 @@ def check_for_infinite_loop(list)
     # puts 'hare ' + hare.value.to_s
     turtle = turtle.next_node
     # puts 'turtle ' + turtle.value.to_s
-    if hare.value == turtle.value && hare.next_node == turtle.next_node
+    if hare == turtle
       return true
     end
   end
